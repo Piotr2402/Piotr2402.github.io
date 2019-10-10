@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Sudoku</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="scripts.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body onload="startNewGame(), startTimer()">
+        <div class="grid-container">
+            <div id="header">
+                <h2>Sudoku Game</h2>
+            </div> 
+            <div id="menu" class="layouts">
+                <div class="buttonGroup">
+                <button onclick="difficulty('easy')" style="background: #A9A9A9" id="easy">Łatwy</button>
+                <button onclick="difficulty('medium')" id="medium">Średni</button>
+                <button onclick="difficulty('hard')" id="hard">Trudny</button>
+                </div>
+                <input class="menuButton" type="submit" value="Rozpocznij nową grę" onclick="startNewGame()">
+                <input class="menuButton" type="submit" value="Resetuj" onclick="reset()">
+                <input class="menuButton" type="submit" value="Sprawdź" onclick="check()">
+                <input class="menuButton" type="submit" value="Pokaż roziwązanie" onclick="solve()">
+                <br><br><br>
+                <div class="gameInfo" id="currentDifficult"></div>
+                <div class="gameInfo" id="timer">00:00:00</div>
+                <br>
+                <div class="gameInfo" style="width: 100%" id ="status">Nierozwiązane</div>
+            </div>
+            <div id="board" class="layouts">
+                    <table>
+                            <tr>
+                                <td id="00" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="10" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="20" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="30" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="40" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="50" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="60" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="70" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="80" class="rightBorder topBorder" onclick="squareClick(this)"></td>
+                            </tr>
+                            <tr>
+                                <td id="01" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="11" onclick="squareClick(this)"></td>
+                                <td id="21" onclick="squareClick(this)"></td>
+                                <td id="31" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="41" onclick="squareClick(this)"></td>
+                                <td id="51" onclick="squareClick(this)"></td>
+                                <td id="61" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="71" onclick="squareClick(this)"></td>
+                                <td id="81" class="rightBorder" onclick="squareClick(this)"></td>
+                            </tr>
+                            <tr>
+                                <td id="02" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="12" onclick="squareClick(this)"></td>
+                                <td id="22" onclick="squareClick(this)"></td>
+                                <td id="32" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="42" onclick="squareClick(this)"></td>
+                                <td id="52" onclick="squareClick(this)"></td>
+                                <td id="62" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="72" onclick="squareClick(this)"></td>
+                                <td id="82" class="rightBorder" onclick="squareClick(this)"></td>
+                            </tr>
+                            <tr>
+                                <td id="03" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="13" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="23" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="33" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="43" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="53" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="63" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="73" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="83" class="rightBorder topBorder" onclick="squareClick(this)"></td>
+                            </tr>
+                            <tr>
+                                <td id="04" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="14" onclick="squareClick(this)"></td>
+                                <td id="24" onclick="squareClick(this)"></td>
+                                <td id="34" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="44" onclick="squareClick(this)"></td>
+                                <td id="54" onclick="squareClick(this)"></td>
+                                <td id="64" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="74" onclick="squareClick(this)"></td>
+                                <td id="84" class="rightBorder" onclick="squareClick(this)"></td>
+
+                            </tr>
+                            <tr>
+                                <td id="05" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="15" onclick="squareClick(this)"></td>
+                                <td id="25" onclick="squareClick(this)"></td>
+                                <td id="35" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="45" onclick="squareClick(this)"></td>
+                                <td id="55" onclick="squareClick(this)"></td>
+                                <td id="65" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="75" onclick="squareClick(this)"></td>
+                                <td id="85" class="rightBorder" onclick="squareClick(this)"></td>
+                            </tr>
+                            <tr>
+                                <td id="06" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="16" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="26" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="36" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="46" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="56" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="66" class="leftBorder topBorder" onclick="squareClick(this)"></td>
+                                <td id="76" class="topBorder" onclick="squareClick(this)"></td>
+                                <td id="86" class="rightBorder topBorder" onclick="squareClick(this)"></td>
+                            </tr>
+                            <tr>
+                                <td id="07" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="17" onclick="squareClick(this)"></td>
+                                <td id="27" onclick="squareClick(this)"></td>
+                                <td id="37" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="47" onclick="squareClick(this)"></td>
+                                <td id="57" onclick="squareClick(this)"></td>
+                                <td id="67" class="leftBorder" onclick="squareClick(this)"></td>
+                                <td id="77" onclick="squareClick(this)"></td>
+                                <td id="87" class="rightBorder" onclick="squareClick(this)"></td>
+                            </tr>
+                            <tr>
+                                <td id="08" class="leftBorder bottomBorder" onclick="squareClick(this)"></td>
+                                <td id="18" class="bottomBorder" onclick="squareClick(this)"></td>
+                                <td id="28" class="bottomBorder" onclick="squareClick(this)"></td>
+                                <td id="38" class="leftBorder bottomBorder" onclick="squareClick(this)"></td>
+                                <td id="48" class="bottomBorder" onclick="squareClick(this)"></td>
+                                <td id="58" class="bottomBorder" onclick="squareClick(this)"></td>
+                                <td id="68" class="leftBorder bottomBorder" onclick="squareClick(this)"></td>
+                                <td id="78" class="bottomBorder" onclick="squareClick(this)"></td>
+                                <td id="88" class="rightBorder bottomBorder" onclick="squareClick(this)"></td>
+                            </tr>
+                        </table>
+            </div>  
+            <div id="numbers" class="layouts">
+                <button onclick="markCell(1)" class="numberButton" id="1">1</button>
+                <button onclick="markCell(2)" class="numberButton" id="2">2</button>
+                <button onclick="markCell(3)" class="numberButton" id="3">3</button>
+                <br>
+                <button onclick="markCell(4)" class="numberButton" id="4">4</button>
+                <button onclick="markCell(5)" class="numberButton" id="5">5</button>
+                <button onclick="markCell(6)" class="numberButton" id="6">6</button>
+                <br>
+                <button onclick="markCell(7)" class="numberButton" id="7">7</button>
+                <button onclick="markCell(8)" class="numberButton" id="8">8</button>
+                <button onclick="markCell(9)" class="numberButton" id="9">9</button>
+                <br>
+                <button onclick="markCell(0)" class="numberButton">C</button>
+            </div>
+        </div>
+    </body>
+</html>

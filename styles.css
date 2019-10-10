@@ -1,0 +1,156 @@
+html {
+    height: 100%;
+    background: #99ff66;
+}
+
+label {
+    font-size: 25px;
+    margin-left: 70px;
+}
+
+* {
+    box-sizing: border-box;
+ }
+
+.layouts {
+    border-radius: 25px;
+    float: left;
+}
+
+#header {
+    text-align: center;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 30px;
+}
+
+#menu {
+    width: 25%;
+}
+
+#board {
+    width: 50%;
+}
+
+#numbers {
+    padding-top: 50px;
+    width: 25%;
+}
+
+td {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    border: black 1px solid;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    background: transparent;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left:auto; 
+    margin-right:auto;
+    box-shadow: 0 0 5px 5px #888888;
+}
+
+.topBorder {
+    border-top: solid 5px black;
+}
+
+.bottomBorder {
+    border-bottom: solid 5px black;
+}
+
+.leftBorder {
+    border-left: solid 5px black;
+}
+
+.rightBorder {
+    border-right: solid 5px black;
+}
+
+.numberButton {
+    width: 70px;
+    height: 70px;
+    margin: 8px;
+    background-color:#99ff66;
+    border-radius: 12px;
+    color: black;
+    border: solid 2px black;
+    transition-duration: 0.4s;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+  }
+  
+.numberButton:hover {
+    background-color: #555555;
+    color: white;
+}
+
+.numberButtonDisabled {
+    width: 70px;
+    height: 70px;
+    margin: 8px;
+    background-color:#99ff66;
+    border-radius: 12px;
+    color: red;
+    border: solid 2px red;
+    transition-duration: 0.4s;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 30px;
+    opacity: 0.6;
+}
+
+.menuButton {
+    background-color:#99ff66;
+    border: none;
+    color: black;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 8px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 2px solid #555555;
+    width: 100%;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+  
+.menuButton:hover {
+    background-color: #555555;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.buttonGroup button {
+    width: 33.33%;
+    background-color:#99ff66;
+    border: 2px solid #555555;
+    color: black;
+    padding: 10px 24px; 
+    cursor: pointer; 
+    float: left; 
+    margin-top: 8px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 16px;
+}
+  
+.buttonGroup:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+  
+.buttonGroup button:not(:last-child) {
+    border-right: none;
+}
+
+.gameInfo {
+    width: 50%;
+    float: left;
+    text-align: center;
+    font-size: 30px;
+    font-family: "Arial Black", Gadget, sans-serif;
+}
